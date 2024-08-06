@@ -1,14 +1,14 @@
 class Solution:
     def rearrangeArray(self, nums: List[int]) -> List[int]:
-        greater=[]
-        lesser=[]
-        ans=[]
-        for i in nums:
-            if i<0:
-                lesser.append(i)
+        n = len(nums)
+        ans = [0]*n
+        posidx = 0
+        negidx = 1
+        for i in range(n):
+            if nums[i]<0:
+                ans[negidx] = nums[i]
+                negidx += 2
             else:
-                greater.append(i)
-        for i in range(0,len(greater)):
-            ans.append(greater[i])
-            ans.append(lesser[i])
+                ans[posidx] = nums[i]
+                posidx += 2
         return ans
